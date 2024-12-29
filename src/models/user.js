@@ -37,6 +37,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     profileUrl: DataTypes.STRING,
+    premium: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
   }, {
     sequelize,
     modelName: 'User',

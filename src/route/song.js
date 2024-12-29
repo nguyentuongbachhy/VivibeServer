@@ -7,4 +7,6 @@ route.get('/get-speed-dial', songController.getSpeedDialController)
 
 route.post('/get-quick-picks', songController.getQuickPicksController)
 
+route.get('/get-detail-song', songController.getDetailSongController)
+
 export default route

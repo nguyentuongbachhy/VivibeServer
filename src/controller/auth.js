@@ -1,7 +1,7 @@
 import * as authService from '../service/auth'
 
 export const loginOrRegisterController = async (req, res) => {
-    const { googleId, email, name, profileUrl } = req.body.user
+    const { googleId, email, name, profileUrl, premium } = req.body.user
 
     if (!googleId || !email || !name) {
         return res.status(401).json({
@@ -11,7 +11,7 @@ export const loginOrRegisterController = async (req, res) => {
     }
 
     try {
-        const response = await authService.loginOrRegisterService(googleId, email, name, profileUrl)
+        const response = await authService.loginOrRegisterService(googleId, email, name, profileUrl, premium)
         if (response?.err == 0) {
             return res.status(200).json(response)
         }

@@ -40,14 +40,13 @@ module.exports = {
       lyrics: {
         type: Sequelize.TEXT
       },
-      duration: {
-        type: Sequelize.INTEGER
-      },
-
       views: {
         type: Sequelize.INTEGER
       },
       likes: {
+        type: Sequelize.INTEGER
+      },
+      dominantColor: {
         type: Sequelize.INTEGER
       },
       createdAt: {
