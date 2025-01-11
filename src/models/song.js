@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Song.belongsTo(models.Artist, { foreignKey: 'artistId', as: 'artist' });
-      Song.belongsTo(models.Album, { foreignKey: 'albumId' });
+      Song.belongsTo(models.Album, { foreignKey: 'albumId', as: 'album' });
       Song.belongsToMany(models.Genre, {
         through: 'SongGenre',
         foreignKey: 'songId'
@@ -30,8 +30,9 @@ module.exports = (sequelize, DataTypes) => {
     artistId: DataTypes.INTEGER,
     albumId: DataTypes.INTEGER,
     audio: DataTypes.STRING,
+    duration: DataTypes.INTEGER,
     lyrics: DataTypes.TEXT,
-    views: DataTypes.INTEGER,
+    views: DataTypes.BIGINT,
     likes: DataTypes.INTEGER,
     dominantColor: DataTypes.INTEGER
   }, {

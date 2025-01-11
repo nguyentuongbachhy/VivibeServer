@@ -12,9 +12,6 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
-      releaseDate: {
-        type: Sequelize.DATE
-      },
       artistId: {
         type: Sequelize.INTEGER,
         references: {
@@ -23,6 +20,10 @@ module.exports = {
         },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
+      },
+      likes: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
       },
       createdAt: {
         allowNull: false,

@@ -7,7 +7,6 @@ const initRoute = (app) => {
     app.use('/api/v1/song', songRoute)
     app.use('/api/v1/genre', genreRoute)
 
-
     return app.use('/', (req, res) => {
         res.send('Server on')
     })

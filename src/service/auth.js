@@ -3,7 +3,6 @@ import { v4 } from 'uuid'
 import db from '../models'
 require('dotenv').config()
 
-
 export const loginOrRegisterService = (googleId, email, name, profileUrl, premium) => new Promise(async (resolve, reject) => {
     try {
         const response = await db.User.findOrCreate({

@@ -37,11 +37,15 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      duration: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
       lyrics: {
         type: Sequelize.TEXT
       },
       views: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       likes: {
         type: Sequelize.INTEGER

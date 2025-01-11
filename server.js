@@ -1,4 +1,3 @@
-import { testConnection } from './src/config/connect'
 import initRoute from './src/route'
 
 const express = require('express')
@@ -19,8 +18,6 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 initRoute(app)
-
-testConnection()
 
 const listener = app.listen(process.env.PORT, () => {
     console.log('Server is running on port ' + listener.address().port);

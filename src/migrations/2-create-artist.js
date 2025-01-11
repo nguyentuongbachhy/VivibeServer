@@ -20,6 +20,10 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
+      followers: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -1,6 +1,5 @@
 import db from '../models'
 
-
 export const getGenresService = () => new Promise(async (resolve, reject) => {
     try {
         const response = await db.Genre.findAll({
@@ -16,7 +15,7 @@ export const getGenresService = () => new Promise(async (resolve, reject) => {
     } catch (error) {
         reject({
             err: -1,
-            msg: `Interval server ${error}`
+            msg: `Interval server: ${error}`
         })
     }
 })

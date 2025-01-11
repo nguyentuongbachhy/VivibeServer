@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Artist.hasMany(models.Song, { foreignKey: 'artistId', as: 'artist' });
-      Artist.hasMany(models.Album, { foreignKey: 'artistId' });
+      Artist.hasMany(models.Song, { foreignKey: 'artistId', as: 'songs' });
+      Artist.hasMany(models.Album, { foreignKey: 'artistId', as: 'albums' });
     }
   }
   Artist.init({
@@ -24,7 +24,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    description: DataTypes.TEXT
+    description: DataTypes.TEXT,
+    followers: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Artist',
