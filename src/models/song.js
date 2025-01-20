@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'songId'
       });
       Song.hasMany(models.ListeningHistory, { foreignKey: 'songId' });
+      Song.hasMany(models.Comment, { foreignKey: 'songId', as: 'comments' });
     }
   }
   Song.init({
@@ -34,7 +35,21 @@ module.exports = (sequelize, DataTypes) => {
     lyrics: DataTypes.TEXT,
     views: DataTypes.BIGINT,
     likes: DataTypes.INTEGER,
-    dominantColor: DataTypes.INTEGER
+    climaxStart: DataTypes.INTEGER,
+    climaxEnd: DataTypes.INTEGER,
+    dominantColor: DataTypes.INTEGER,
+    commentBranchId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'Comment',
+        key: 'id'
+      }
+    },
+    commentCount: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    }
   }, {
     sequelize,
     modelName: 'Song',

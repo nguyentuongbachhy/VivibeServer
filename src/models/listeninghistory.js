@@ -18,7 +18,9 @@ module.exports = (sequelize, DataTypes) => {
   ListeningHistory.init({
     userId: DataTypes.UUID,
     songId: DataTypes.INTEGER,
-    playedAt: DataTypes.DATE
+    lastPlayedAt: {
+      type: DataTypes.DATE
+    }
   }, {
     sequelize,
     modelName: 'ListeningHistory',

@@ -3,7 +3,7 @@ import { v4 } from 'uuid'
 import db from '../models'
 require('dotenv').config()
 
-export const loginOrRegisterService = (googleId, email, name, profileUrl, premium) => new Promise(async (resolve, reject) => {
+export const loginOrRegisterService = (googleId, email, name, profilePictureUri, premium) => new Promise(async (resolve, reject) => {
     try {
         const response = await db.User.findOrCreate({
             where: {
@@ -15,7 +15,7 @@ export const loginOrRegisterService = (googleId, email, name, profileUrl, premiu
                 googleId,
                 email,
                 name,
-                profileUrl,
+                profileUrl: profilePictureUri,
                 premium: +premium
             },
             raw: true
@@ -33,6 +33,7 @@ export const loginOrRegisterService = (googleId, email, name, profileUrl, premiu
             resolve({
                 err: 0,
                 msg: "Register successfully",
+                id: response[0].id,
                 token: serverToken,
                 premium: +response[0].premium
             })
@@ -40,8 +41,9 @@ export const loginOrRegisterService = (googleId, email, name, profileUrl, premiu
             resolve({
                 err: 0,
                 msg: 'Login successfully',
+                id: response[0].id,
                 token: serverToken,
-                premium: +response[0].premium
+                premium: +response[0].premium,
             })
         }
 

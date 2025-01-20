@@ -45,13 +45,31 @@ module.exports = {
         type: Sequelize.TEXT
       },
       views: {
-        type: Sequelize.BIGINT
+        type: Sequelize.BIGINT,
+        defaultValue: 0
       },
       likes: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: 0
       },
       dominantColor: {
         type: Sequelize.INTEGER
+      },
+      climaxStart: {
+        type: Sequelize.INTEGER
+      },
+      climaxEnd: {
+        type: Sequelize.INTEGER
+      },
+      commentBranchId: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
+      },
+      commentCount: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
       },
       createdAt: {
         allowNull: false,
@@ -62,7 +80,25 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    // Add index for comment branch lookup
+    await queryInterface.addIndex('Songs', ['commentBranchId']);
   },
+
+  // async up(queryInterface, Sequelize) {
+  //   await queryInterface.addConstraint('Songs', {
+  //     fields: ['commentBranchId'],
+  //     type: 'foreign key',
+  //     name: 'songs_comment_branch_fk',
+  //     references: {
+  //       table: 'Comments',
+  //       field: 'id'
+  //     },
+  //     onDelete: 'SET NULL',
+  //     onUpdate: 'CASCADE'
+  //   });
+  // },
+
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Songs');
   }

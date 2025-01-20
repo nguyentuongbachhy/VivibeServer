@@ -27,7 +27,7 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      playedAt: {
+      lastPlayedAt: {
         type: Sequelize.DATE
       },
       createdAt: {
